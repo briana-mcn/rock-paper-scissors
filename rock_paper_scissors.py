@@ -63,7 +63,7 @@ def play_game():
 
         print("ROUND: " + str(round_count))
 
-        round_winner = round(user_choice(), computer_choice())
+        round_winner = get_round_winner(user_choice(), computer_choice())
 
         if round_winner == "user":
             user_score += 1
@@ -87,7 +87,7 @@ def play_game():
 
 
 # get round winner
-def round(user, comp):
+def get_round_winner(user, comp):
 
     if user == comp:
         return "tie"
