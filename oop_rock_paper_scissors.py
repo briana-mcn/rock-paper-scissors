@@ -65,12 +65,12 @@ class User(object):
         return self.choice
 
     # function to convert input to Move instance
-    def convert_input_to_move(self, input_str):
-        if input_str == 'rock':
+    def convert_input_to_move(self):
+        if self.choice == 'rock':
             self.instance = Rock()
-        elif input_str == 'paper':
+        elif self.choice == 'paper':
             self.instance = Paper()
-        elif input_str == 'scissors':
+        elif self.choice == 'scissors':
             self.instance = Scissors()
         else:
             print('Invalid Input')
