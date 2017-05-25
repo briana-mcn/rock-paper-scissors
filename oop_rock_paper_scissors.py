@@ -123,22 +123,22 @@ def main():
     # first user to score (2 divided by original rounds) wins
     while original_rounds/2 > user.score and original_rounds/2 > computer.score:
 
-        # get user choice
-        # convert string choice to class instance
+        # get user move instance
         user.get_move()
         print('User input: ' + user.choice)
-        user_input = game.convert_input_to_move(user.play_move())
+        user.convert_input_to_move(user.play_move())
+        user_instance = user.get_move_instance()
 
-        # get computer choice
-        # convert string to class instance
+        # get computer move instance
         computer.get_move()
         print('Computer input: ' + computer.choice)
-        computer_input = game.convert_input_to_move(computer.play_move())
+        computer.convert_input_to_move(computer.play_move())
+        computer_instance = computer.get_move_instance()
 
         # main game play comparison operations
-        if user_input == computer_input:
+        if user_instance == computer_instance:
             print('Tie')
-        elif user_input < computer_input:
+        elif user_instance < computer_instance:
             print('Computer wins')
             computer.score += 1
         else:
