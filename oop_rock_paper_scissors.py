@@ -55,6 +55,7 @@ class User(object):
     def __init__(self):
         self.score = 0
         self.choice = None
+        self.instance = None
 
     def get_move(self):
         user_choice = input('Choose rock, paper, or scissors: ')
@@ -62,6 +63,21 @@ class User(object):
 
     def play_move(self):
         return self.choice
+
+    # function to convert input to Move instance
+    def convert_input_to_move(self, input_str):
+        if input_str == 'rock':
+            self.instance = Rock()
+        elif input_str == 'paper':
+            self.instance = Paper()
+        elif input_str == 'scissors':
+            self.instance = Scissors()
+        else:
+            print('Invalid Input')
+            exit()
+
+    def get_move_instance(self):
+        return self.instance
 
 
 class NPCUser(User):
@@ -75,18 +91,6 @@ class Game(object):
 
     def __init__(self):
         self.rounds = 0
-
-    # function to convert input to Move instance
-    def convert_input_to_move(self, input_str):
-        if input_str == 'rock':
-            return Rock()
-        elif input_str == 'paper':
-            return Paper()
-        elif input_str == 'scissors':
-            return Scissors()
-        else:
-            print('Invalid Input')
-            exit()
 
     # check for odd number of rounds
     def get_rounds(self):
