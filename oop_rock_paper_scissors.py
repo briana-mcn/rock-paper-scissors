@@ -125,15 +125,15 @@ def main():
 
         # get user move instance
         user.get_move()
-        print('User input: ' + user.choice)
-        user.convert_input_to_move(user.play_move())
+        user.convert_input_to_move()
         user_instance = user.get_move_instance()
 
         # get computer move instance
         computer.get_move()
-        print('Computer input: ' + computer.choice)
-        computer.convert_input_to_move(computer.play_move())
+        computer.convert_input_to_move()
         computer_instance = computer.get_move_instance()
+
+        print('User Input: {} Computer Input: {}'.format(user.choice, computer.choice))
 
         # main game play comparison operations
         if user_instance == computer_instance:
