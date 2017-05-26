@@ -6,7 +6,7 @@ import random
 class Move(object):
 
     def __eq__(self, other):
-        if type(self) == type(other):
+        if type(self) is type(other):
             return True
         return False
 
