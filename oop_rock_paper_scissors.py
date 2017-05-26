@@ -95,10 +95,11 @@ class Game(object):
     # check for odd number of rounds
     def get_rounds(self):
         rounds = int(input('How many odd rounds would you like to play? '))
-        self.rounds = rounds
-
-    def return_rounds(self):
-        return self.rounds
+        if rounds % 2 != 0:
+            self.rounds = rounds
+        else:
+            print('Please enter odd number of rounds.')
+            exit()
 
 
 def main():
