@@ -108,21 +108,9 @@ def main():
     computer = NPCUser()
     game = Game()
 
-    # prompt human user for rounds
     game.get_rounds()
 
-    # get original round input for functionality of odd round game play
-    original_rounds = game.return_rounds()
-
-    if original_rounds % 2 != 0:
-        pass
-    else:
-        print('Please enter odd number of rounds.')
-        exit()
-
-    # loop for main game for each round
-    # first user to score (2 divided by original rounds) wins
-    while original_rounds/2 > user.score and original_rounds/2 > computer.score:
+    while game.rounds > (user.score + computer.score):
 
         # get user move instance
         user.get_move()
