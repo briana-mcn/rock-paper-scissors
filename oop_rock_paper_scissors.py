@@ -5,6 +5,7 @@ import random
 
 VALID_CHOICES = ('rock', 'paper', 'scissors')
 
+
 class Move(object):
 
     def __eq__(self, other):
@@ -112,7 +113,9 @@ class Game(object):
             player.get_move()
             player.convert_input_to_move()
 
-        print('User Input: {} Computer Input: {}'.format(self.player1.choice, self.player2.choice))
+        print('User Input: {} '
+              'Computer Input: {}'.format(self.player1.choice,
+                                          self.player2.choice))
 
         if self.player1.instance == self.player2.instance:
             print('Tie')
@@ -123,7 +126,10 @@ class Game(object):
             print('User wins')
             self.player1.score += 1
 
-        print('User Score: {} Computer Score: {}'.format(self.player1.score, self.player2.score))
+        print('User Score: {} '
+              'Computer Score: {}'.format(self.player1.score,
+                                          self.player2.score
+                                          ))
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
@@ -148,4 +154,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
