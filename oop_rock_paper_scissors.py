@@ -3,6 +3,8 @@
 import random
 
 
+VALID_CHOICES = ('rock', 'paper', 'scissors')
+
 class Move(object):
 
     def __eq__(self, other):
@@ -59,7 +61,11 @@ class User(object):
 
     def get_move(self):
         user_choice = input('Choose rock, paper, or scissors: ')
-        self.choice = user_choice
+        if user_choice in VALID_CHOICES:
+            self.choice = user_choice
+        else:
+            print('Invalid Input')
+            exit()
 
     def play_move(self):
         return self.choice
@@ -72,9 +78,6 @@ class User(object):
             self.instance = Paper()
         elif self.choice == 'scissors':
             self.instance = Scissors()
-        else:
-            print('Invalid Input')
-            exit()
 
     def get_move_instance(self):
         return self.instance
@@ -89,8 +92,10 @@ class NPCUser(User):
 
 class Game(object):
 
-    def __init__(self):
+    def __init__(self, player1, player2):
         self.rounds = 0
+        self.player1 = player1
+        self.player2 = player2
 
     # check for odd number of rounds
     def get_rounds(self):
@@ -106,8 +111,7 @@ def main():
 
     user = User()
     computer = NPCUser()
-    game = Game()
-
+    game = Game(user, computer)
     game.get_rounds()
 
     while game.rounds > (user.score + computer.score):
