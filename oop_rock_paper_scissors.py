@@ -106,6 +106,31 @@ class Game(object):
             print('Please enter odd number of rounds.')
             exit()
 
+    def play(self):
+
+        for player in self.player1, self.player2:
+            player.get_move()
+            player.convert_input_to_move()
+
+        print('User Input: {} Computer Input: {}'.format(self.player1.choice, self.player2.choice))
+
+        if self.player1.instance == self.player2.instance:
+            print('Tie')
+        elif self.player1.instance < self.player2.instance:
+            print('Computer wins')
+            self.player2.score += 1
+        else:
+            print('User wins')
+            self.player1.score += 1
+
+        print('User Score: {} Computer Score: {}'.format(self.player1.score, self.player2.score))
+
+    def determine_winner(self):
+        if self.player1.score > self.player2.score:
+            print('User wins game!')
+        else:
+            print('Computer wins game!')
+
 
 def main():
 
@@ -114,40 +139,12 @@ def main():
     game = Game(user, computer)
     game.get_rounds()
 
-    while game.rounds > (user.score + computer.score):
+    while game.rounds > (game.player1.score + game.player2.score):
 
-        # get user move instance
-        user.get_move()
-        user.convert_input_to_move()
-        user_instance = user.get_move_instance()
+        game.play()
 
-        # get computer move instance
-        computer.get_move()
-        computer.convert_input_to_move()
-        computer_instance = computer.get_move_instance()
+    game.determine_winner()
 
-        print('User Input: {} Computer Input: {}'.format(user.choice, computer.choice))
-
-        # main game play comparison operations
-        if user_instance == computer_instance:
-            print('Tie')
-        elif user_instance < computer_instance:
-            print('Computer wins')
-            computer.score += 1
-        else:
-            print('User wins')
-            user.score += 1
-
-        # print score
-        print('User Score: ' + str(user.score) + ' Computer Score:  ' + str(computer.score))
-
-    # determine winner
-    if user.score == computer.score:
-        game.rounds += 1
-    elif user.score > computer.score:
-        print('User wins game!')
-    else:
-        print('Computer wins game!')
 
 if __name__ == '__main__':
     main()
