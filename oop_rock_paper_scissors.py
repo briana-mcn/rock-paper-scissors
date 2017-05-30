@@ -87,7 +87,7 @@ class User(object):
 class NPCUser(User):
 
     def get_move(self):
-        computer_choice = random.choice(('rock', 'paper', 'scissors'))
+        computer_choice = random.choice(VALID_CHOICES)
         self.choice = computer_choice
 
 
