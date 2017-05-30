@@ -108,7 +108,10 @@ class Game(object):
             exit()
 
     def play(self):
+        while self.rounds > (self.player1.score + self.player2.score):
+            self._play()
 
+    def _play(self):
         for player in self.player1, self.player2:
             player.get_move()
             player.convert_input_to_move()
@@ -147,11 +150,7 @@ def main():
     computer = NPCUser()
     game = Game(user, computer)
     game.get_rounds()
-
-    while game.rounds > (game.player1.score + game.player2.score):
-
-        game.play()
-
+    game.play()
     game.determine_winner()
 
 
