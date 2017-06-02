@@ -8,12 +8,12 @@ from oop_rock_paper_scissors import Scissors, Paper, Rock, User, VALID_CHOICES
 
 class MoveTest(unittest.TestCase):
 
-    def test_eq_returns_true_if_type_of_instance_is_type_of_instance(self):
+    def test_eq_returns_true_if_type_of_instance_is_identical_type_of_instance(self):
         scissors1 = Scissors()
         scissors2 = Scissors()
         self.assertIs(type(scissors1), type(scissors2))
 
-    def test_eq_returns_false_if_type_of_instance_is_not_type_of_instance(self):
+    def test_eq_returns_false_if_type_of_instance_is_not_identical_type_of_instance(self):
         scissors = Scissors()
         rock = Rock()
         self.assertIsNot(type(scissors), type(rock))
@@ -89,7 +89,13 @@ class RockTest(unittest.TestCase):
 
 
 class UserTest(unittest.TestCase):
-    # init method
+
+    def test_init_score(self):
+        user = User()
+        self.assertGreaterEqual(user.score, 0)
+
+    def test_init_choice(self):
+        pass
 
     def test_get_move_if_user_choice_in_valid_choices(self):
         user_choice = 'rock'
