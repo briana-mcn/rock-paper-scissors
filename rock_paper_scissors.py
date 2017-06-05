@@ -104,9 +104,6 @@ class Game(object):
             exit()
 
     def play(self):
-        for player in self.player1, self.player2:
-            # player.get_move()
-            player.convert_input_to_move()
 
         print('User Input: {} '
               'Computer Input: {}'.format(self.player1.choice,
