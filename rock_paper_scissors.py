@@ -58,7 +58,6 @@ class User(object):
     def __init__(self):
         self.score = 0
         self._choice = None
-        self.instance = None
 
     @property
     def choice(self):
@@ -67,44 +66,22 @@ class User(object):
     @choice.setter
     def choice(self, value):
         if value in VALID_CHOICES:
-            self._choice = value
+            move = self.convert_input_to_move(value)
+            self._choice = move
         else:
             print('Invalid Input')
             exit()
 
-    # def get_move(self):
-    #     user_choice = input('Choose rock, paper, or scissors: ')
-    #     if user_choice in VALID_CHOICES:
-    #         self.choice = user_choice
-    #     else:
-    #         print('Invalid Input')
-    #         exit()
-
-    # def play_move(self):
-    #     return self.choice
-
-    # function to convert input to Move instance
-    def convert_input_to_move(self):
-        if self.choice == 'rock':
-            self.instance = Rock()
-        elif self.choice == 'paper':
-            self.instance = Paper()
-        elif self.choice == 'scissors':
-            self.instance = Scissors()
-
-    def get_move_instance(self):
-        return self.instance
-
-
-class NPCUser(User):
-
-    @property
-    def choice(self):
-        return self._choice
-
-    @choice.setter
-    def choice(self, value):
-        self._choice = value
+    @staticmethod
+    def convert_input_to_move(user_input):
+        if user_input == 'rock':
+            return Rock()
+        elif user_input == 'paper':
+            return Paper()
+        elif user_input == 'scissors':
+            return Scissors()
+        else:
+            return None
 
 
 class Game(object):
@@ -126,10 +103,6 @@ class Game(object):
             print('Please enter odd number of rounds.')
             exit()
 
-    # def play(self):
-    #     while self.rounds > (self.player1.score + self.player2.score):
-    #         self._play()
-
     def play(self):
         for player in self.player1, self.player2:
             # player.get_move()
@@ -141,9 +114,9 @@ class Game(object):
                                           )
               )
 
-        if self.player1.instance == self.player2.instance:
+        if self.player1.choice == self.player2.choice:
             print('Tie')
-        elif self.player1.instance < self.player2.instance:
+        elif self.player1.choice < self.player2.choice:
             print('Computer wins')
             self.player2.score += 1
         else:
@@ -162,6 +135,7 @@ class Game(object):
         else:
             print('Computer wins game!')
 
+    @property
     def is_complete(self):
         if self.rounds > (self.player1.score + self.player2.score):
             return False
@@ -172,13 +146,13 @@ class Game(object):
 def main():
 
     user = User()
-    computer = NPCUser()
+    computer = User()
 
     game = Game(user, computer)
 
     game.rounds = int(input('How many odd rounds would you like to play? '))
 
-    while not game.is_complete():
+    while not game.is_complete:
         user.choice = input('Choose rock, paper, or scissors: ')
         computer.choice = random.choice(VALID_CHOICES)
         game.play()
@@ -188,28 +162,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-"""
-
-rock_paper_scissors/
-    __init__.py
-    game.py
-    user/
-        user.py
-        npcuser.py
-    moves/
-        move.py
-        paper.py
-        scissors.py
-        rock.py
-    test/
-        test_rock_paper_scissors.py
-
-"""
