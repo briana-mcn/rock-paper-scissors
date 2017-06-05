@@ -1,5 +1,5 @@
 import unittest
-from oop_rock_paper_scissors import Scissors, Paper, Rock, User, VALID_CHOICES
+from rock_paper_scissors import Scissors, Paper, Rock, User, VALID_CHOICES
 
 # write out all class method test cases for classes
 # top to bottom of all classes, start each test
