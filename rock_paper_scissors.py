@@ -154,8 +154,8 @@ def main():
     game.rounds = int(input('How many odd rounds would you like to play? '))
 
     while not game.is_complete:
-        user.choice = input('Choose rock, paper, or scissors: ')
-        computer.choice = random.choice(VALID_CHOICES)
+        user.choice = input('Choose from the following: {}: '.format(', '.join(game.valid_choices)))
+        computer.choice = random.choice(game.valid_choices)
         game.play()
 
     game.determine_winner()
