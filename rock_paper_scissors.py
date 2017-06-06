@@ -103,6 +103,10 @@ class Game(object):
             print('Please enter odd number of rounds.')
             exit()
 
+    @property
+    def valid_choices(self):
+        return list(VALID_CHOICES.keys())
+
     def play(self):
 
         print('User Input: {} '
