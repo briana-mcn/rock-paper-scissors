@@ -3,9 +3,6 @@
 import random
 
 
-VALID_CHOICES = ('rock', 'paper', 'scissors')
-
-
 class Move(object):
 
     def __eq__(self, other):
@@ -51,6 +48,9 @@ class Rock(Move):
         if isinstance(other, Paper):
             return True
         return False
+
+
+VALID_CHOICES = {'rock': Rock(), 'paper': Paper(), 'scissors': Scissors()}
 
 
 class User(object):
