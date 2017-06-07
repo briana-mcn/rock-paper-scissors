@@ -50,7 +50,11 @@ class Rock(Move):
         return False
 
 
-VALID_CHOICES = {'rock': Rock(), 'paper': Paper(), 'scissors': Scissors()}
+VALID_CHOICES = {
+    'rock': Rock(),
+    'paper': Paper(),
+    'scissors': Scissors()
+}
 
 
 class User(object):
