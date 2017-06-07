@@ -105,7 +105,7 @@ class Game(object):
 
     @property
     def valid_choices(self):
-        return list(VALID_CHOICES.keys())
+        return tuple(VALID_CHOICES.keys())
 
     def play(self):
 
