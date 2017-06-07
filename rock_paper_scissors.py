@@ -55,9 +55,10 @@ class Rock(Move):
 
 class User(object):
 
-    def __init__(self):
+    def __init__(self, name):
         self.score = 0
         self._choice = None
+        self.name = name
 
     @property
     def choice(self):
@@ -142,8 +143,8 @@ class Game(object):
 
 def main():
 
-    user = User()
-    computer = User()
+    user = User('User')
+    computer = User('Computer')
 
     game = Game(user, computer)
 
