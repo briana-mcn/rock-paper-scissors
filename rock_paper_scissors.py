@@ -104,6 +104,16 @@ class Game(object):
             print('Please enter odd number of rounds.')
             exit()
 
+    @staticmethod
+    def print_players_menu(self, menu_word):
+        for player in self.player1, self.player2:
+            if menu_word == 'Input':
+                print('{} {}: {}'.format(player.name, menu_word, player.choice))
+            elif menu_word == 'Score':
+                print('{} {}: {}'.format(player.name, menu_word, player.score))
+            else:
+                return None
+
     def play(self):
 
         print('User Input: {} '
