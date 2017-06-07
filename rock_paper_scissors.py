@@ -78,10 +78,7 @@ class User(object):
 
     @staticmethod
     def convert_input_to_move(user_input):
-        if user_input in VALID_CHOICES.keys():
-            return VALID_CHOICES[user_input]
-        else:
-            return None
+        return VALID_CHOICES.get(user_input)
 
 
 class Game(object):
