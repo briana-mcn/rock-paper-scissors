@@ -116,11 +116,8 @@ class Game(object):
 
     def play(self):
 
-        print('User Input: {} '
-              'Computer Input: {}'.format(self.player1.choice,
-                                          self.player2.choice
-                                          )
-              )
+        # print menu
+        self.print_players_menu(self, 'Input')
 
         if self.player1.choice == self.player2.choice:
             print('Tie')
@@ -131,11 +128,7 @@ class Game(object):
             print('User wins')
             self.player1.score += 1
 
-        print('User Score: {} '
-              'Computer Score: {}'.format(self.player1.score,
-                                          self.player2.score
-                                          )
-              )
+        self.print_players_menu(self, 'Score')
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
