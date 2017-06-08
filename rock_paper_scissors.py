@@ -136,12 +136,12 @@ class Game(object):
             print('Computer wins')
             self.player2.score += 1
         else:
-            print('User wins')
+            print('Human wins')
             self.player1.score += 1
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
-            print('User wins game!')
+            print('Human wins game!')
         elif self.player1.score < self.player2.score:
             print('Computer wins game!')
         else:
@@ -157,16 +157,16 @@ class Game(object):
 
 def main():
 
-    user = User('User')
+    human = User('Human')
     computer = User('Computer')
 
-    game = Game(user, computer)
+    game = Game(human, computer)
 
     while game.rounds == 0:
         game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
-        user.choice = input('Choose rock, paper, or scissors: ')
+        human.choice = input('Choose rock, paper, or scissors: ')
         computer.choice = random.choice(VALID_CHOICES)
         game.print_players_menu('Input')
         game.play()
