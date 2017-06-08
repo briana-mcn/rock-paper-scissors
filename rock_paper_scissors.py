@@ -116,8 +116,7 @@ class Game(object):
                 print('Please enter a number greater than zero')
                 return
 
-            else:
-                self._rounds = value
+            self._rounds = value
 
     def play(self):
 
