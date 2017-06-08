@@ -13,6 +13,10 @@ class Move(object):
             return True
         return False
 
+    @classmethod
+    def __repr__(cls):
+        return cls.__name__
+
 
 class Scissors(Move):
 
