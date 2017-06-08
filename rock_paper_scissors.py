@@ -3,9 +3,6 @@
 import random
 
 
-VALID_CHOICES = ('rock', 'paper', 'scissors')
-
-
 class Move(object):
 
     def __eq__(self, other):
@@ -53,6 +50,13 @@ class Rock(Move):
         return False
 
 
+VALID_CHOICES = {
+    'rock': Rock(),
+    'paper': Paper(),
+    'scissors': Scissors()
+}
+
+
 class User(object):
 
     def __init__(self):
@@ -74,14 +78,7 @@ class User(object):
 
     @staticmethod
     def convert_input_to_move(user_input):
-        if user_input == 'rock':
-            return Rock()
-        elif user_input == 'paper':
-            return Paper()
-        elif user_input == 'scissors':
-            return Scissors()
-        else:
-            return None
+        return VALID_CHOICES.get(user_input)
 
 
 class Game(object):
@@ -117,6 +114,10 @@ class Game(object):
                 return
 
             self._rounds = value
+
+    @property
+    def valid_choices(self):
+        return tuple(VALID_CHOICES.keys())
 
     def play(self):
 
@@ -168,8 +169,14 @@ def main():
         game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
-        user.choice = input('Choose rock, paper, or scissors: ')
-        computer.choice = random.choice(VALID_CHOICES)
+        choices = ', or '.join(
+            [
+                ', '.join(game.valid_choices[:-1]),
+                game.valid_choices[-1]
+            ]
+        )
+        user.choice = input('Choose {}'.format(choices))
+        computer.choice = random.choice(game.valid_choices)
         game.play()
 
     game.determine_winner()
