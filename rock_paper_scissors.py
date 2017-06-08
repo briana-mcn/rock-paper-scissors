@@ -100,13 +100,25 @@ class Game(object):
 
     @rounds.setter
     def rounds(self, value):
-        try:
-            value = int(value)
-            if value % 2 == 0 or value < 0:
-                raise ValueError
-        except ValueError:
-            print('Please enter odd number of rounds.')
-        else:
+
+            try:
+                value = int(value)
+            except ValueError:
+                print('Input cannot be a string')
+                return
+
+            try:
+                assert value % 2 != 0
+            except AssertionError:
+                print('Please enter an odd number of rounds')
+                return
+
+            try:
+                assert value > 0
+            except AssertionError:
+                print('Please enter a number greater than zero')
+                return
+
             self._rounds = value
 
     def play(self):
@@ -155,7 +167,8 @@ def main():
 
     game = Game(user, computer)
 
-    game.rounds = input('How many odd rounds would you like to play? ')
+    while game.rounds == 0:
+        game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
         user.choice = input('Choose rock, paper, or scissors: ')
