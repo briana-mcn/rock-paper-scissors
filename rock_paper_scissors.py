@@ -98,11 +98,26 @@ class Game(object):
 
     @rounds.setter
     def rounds(self, value):
-        if value % 2 != 0:
+
+            try:
+                value = int(value)
+            except ValueError:
+                print('Input cannot be a string')
+                return
+
+            try:
+                assert value % 2 != 0
+            except AssertionError:
+                print('Please enter an odd number of rounds')
+                return
+
+            try:
+                assert value > 0
+            except AssertionError:
+                print('Please enter a number greater than zero')
+                return
+
             self._rounds = value
-        else:
-            print('Please enter odd number of rounds.')
-            exit()
 
     def print_players_menu(self, menu_word):
         for player in self.player1, self.player2:
@@ -127,8 +142,10 @@ class Game(object):
     def determine_winner(self):
         if self.player1.score > self.player2.score:
             print('User wins game!')
-        else:
+        elif self.player1.score < self.player2.score:
             print('Computer wins game!')
+        else:
+            return None
 
     @property
     def is_complete(self):
@@ -145,7 +162,8 @@ def main():
 
     game = Game(user, computer)
 
-    game.rounds = int(input('How many odd rounds would you like to play? '))
+    while game.rounds == 0:
+        game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
         user.choice = input('Choose rock, paper, or scissors: ')
