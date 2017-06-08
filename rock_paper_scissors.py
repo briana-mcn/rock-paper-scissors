@@ -169,7 +169,13 @@ def main():
         game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
-        user.choice = input('Choose from the following: {}: '.format(', '.join(game.valid_choices)))
+        choices = ', or '.join(
+            [
+                ', '.join(game.valid_choices[:-1]),
+                game.valid_choices[-1]
+            ]
+        )
+        user.choice = input('Choose {}'.format(choices))
         computer.choice = random.choice(game.valid_choices)
         game.play()
 
