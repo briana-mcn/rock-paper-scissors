@@ -165,7 +165,8 @@ def main():
 
     game = Game(user, computer)
 
-    game.rounds = input('How many odd rounds would you like to play? ')
+    while game.rounds == 0:
+        game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
         user.choice = input('Choose rock, paper, or scissors: ')
