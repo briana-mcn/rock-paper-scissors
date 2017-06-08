@@ -115,9 +115,6 @@ class Game(object):
 
     def play(self):
 
-        # print menu
-        self.print_players_menu(self, 'Input')
-
         if self.player1.choice == self.player2.choice:
             print('Tie')
         elif self.player1.choice < self.player2.choice:
@@ -126,8 +123,6 @@ class Game(object):
         else:
             print('User wins')
             self.player1.score += 1
-
-        self.print_players_menu(self, 'Score')
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
@@ -155,7 +150,9 @@ def main():
     while not game.is_complete:
         user.choice = input('Choose rock, paper, or scissors: ')
         computer.choice = random.choice(VALID_CHOICES)
+        game.print_players_menu('Input')
         game.play()
+        game.print_players_menu('Score')
 
     game.determine_winner()
 
