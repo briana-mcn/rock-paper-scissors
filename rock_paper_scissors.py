@@ -22,14 +22,13 @@ def main():
                 game.valid_choices[-1]
             ]
         )
-        human.choice = input('Choose {}'.format(choices))
-        computer.choice = random.choice(VALID_CHOICES)
+        human.choice = input('Choose {}: '.format(choices))
+        computer.choice = random.choice(game.valid_choices)
         game.print_players_menu('Input')
         game.play()
         game.print_players_menu('Score')
 
     game.determine_winner()
-
 
 if __name__ == '__main__':
     main()
