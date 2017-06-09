@@ -3,15 +3,15 @@
 import random
 
 
-VALID_CHOICES = ('rock', 'paper', 'scissors')
-
-
 class Move(object):
 
     def __eq__(self, other):
         if type(self) is type(other):
             return True
         return False
+
+    def __repr__(self):
+        return self.__class__.__name__
 
 
 class Scissors(Move):
@@ -53,6 +53,13 @@ class Rock(Move):
         return False
 
 
+VALID_CHOICES = {
+    'rock': Rock(),
+    'paper': Paper(),
+    'scissors': Scissors()
+}
+
+
 class User(object):
 
     def __init__(self, name):
@@ -75,14 +82,7 @@ class User(object):
 
     @staticmethod
     def convert_input_to_move(user_input):
-        if user_input == 'rock':
-            return Rock()
-        elif user_input == 'paper':
-            return Paper()
-        elif user_input == 'scissors':
-            return Scissors()
-        else:
-            return None
+        return VALID_CHOICES.get(user_input)
 
 
 class Game(object):
@@ -118,6 +118,10 @@ class Game(object):
                 return
 
             self._rounds = value
+
+    @property
+    def valid_choices(self):
+        return tuple(VALID_CHOICES.keys())
 
     def print_players_menu(self, menu_word):
         for player in self.player1, self.player2:
@@ -166,7 +170,13 @@ def main():
         game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
-        human.choice = input('Choose rock, paper, or scissors: ')
+        choices = ', or '.join(
+            [
+                ', '.join(game.valid_choices[:-1]),
+                game.valid_choices[-1]
+            ]
+        )
+        human.choice = input('Choose {}'.format(choices))
         computer.choice = random.choice(VALID_CHOICES)
         game.print_players_menu('Input')
         game.play()
