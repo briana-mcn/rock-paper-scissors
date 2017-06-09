@@ -62,9 +62,10 @@ VALID_CHOICES = {
 
 class User(object):
 
-    def __init__(self):
+    def __init__(self, name):
         self.score = 0
         self._choice = None
+        self.name = name
 
     @property
     def choice(self):
@@ -122,13 +123,16 @@ class Game(object):
     def valid_choices(self):
         return tuple(VALID_CHOICES.keys())
 
-    def play(self):
+    def print_players_menu(self, menu_word):
+        for player in self.player1, self.player2:
+            if menu_word == 'Input':
+                print('{} {}: {}'.format(player.name, menu_word, player.choice))
+            elif menu_word == 'Score':
+                print('{} {}: {}'.format(player.name, menu_word, player.score))
+            else:
+                return None
 
-        print('User Input: {} '
-              'Computer Input: {}'.format(self.player1.choice,
-                                          self.player2.choice
-                                          )
-              )
+    def play(self):
 
         if self.player1.choice == self.player2.choice:
             print('Tie')
@@ -136,18 +140,12 @@ class Game(object):
             print('Computer wins')
             self.player2.score += 1
         else:
-            print('User wins')
+            print('Human wins')
             self.player1.score += 1
-
-        print('User Score: {} '
-              'Computer Score: {}'.format(self.player1.score,
-                                          self.player2.score
-                                          )
-              )
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
-            print('User wins game!')
+            print('Human wins game!')
         elif self.player1.score < self.player2.score:
             print('Computer wins game!')
         else:
@@ -163,10 +161,10 @@ class Game(object):
 
 def main():
 
-    user = User()
-    computer = User()
+    human = User('Human')
+    computer = User('Computer')
 
-    game = Game(user, computer)
+    game = Game(human, computer)
 
     while game.rounds == 0:
         game.rounds = input('How many odd rounds would you like to play? ')
@@ -178,9 +176,11 @@ def main():
                 game.valid_choices[-1]
             ]
         )
-        user.choice = input('Choose {}'.format(choices))
-        computer.choice = random.choice(game.valid_choices)
+        human.choice = input('Choose {}'.format(choices))
+        computer.choice = random.choice(VALID_CHOICES)
+        game.print_players_menu('Input')
         game.play()
+        game.print_players_menu('Score')
 
     game.determine_winner()
 
