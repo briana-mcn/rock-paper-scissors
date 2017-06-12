@@ -1,8 +1,10 @@
 """ Object-Oriented Rock Paper Scissors """
 
 import random
-from game import Game
+
 from user import User
+
+from rock_paper_scissors.game import Game
 
 
 def main():
