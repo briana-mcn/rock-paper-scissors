@@ -1,4 +1,4 @@
-from rock_paper_scissors.valid_choices import VALID_CHOICES
+from valid_choices import VALID_CHOICES
 
 
 class User(object):
