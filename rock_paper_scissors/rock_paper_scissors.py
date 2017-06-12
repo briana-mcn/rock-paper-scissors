@@ -4,7 +4,7 @@ import random
 
 from user import User
 
-from rock_paper_scissors.game import Game
+from game import Game
 
 
 def main():
