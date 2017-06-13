@@ -2,9 +2,9 @@
 
 import random
 
-from user import User
+from rock_paper_scissors.user import User
 
-from game import Game
+from rock_paper_scissors.game import Game
 
 
 def main():
