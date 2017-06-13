@@ -1,5 +1,5 @@
 import unittest
-from moves import Scissors, Rock, Paper
+from rock_paper_scissors.moves import Scissors, Rock, Paper
 
 
 class MoveTest(unittest.TestCase):
