@@ -6,17 +6,16 @@ from rock_paper_scissors.user import User
 from rock_paper_scissors.game import Game
 
 
-human = User('Human')
-computer = User('Computer')
-game = Game(human, computer)
-
-
 def main():
+    human = User('Human')
+    computer = User('Computer')
+    game = Game(human, computer)
+
     while game.rounds == 0:
         game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
-        validate_users_choice()
+        validate_users_choice(game)
 
         game.print_players_menu('Input')
         game.play()
@@ -25,7 +24,7 @@ def main():
     game.determine_winner()
 
 
-def validate_users_choice():
+def validate_users_choice(game):
     choices = ', or '.join(
         [
             ', '.join(game.valid_choices[:-1]),
