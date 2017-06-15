@@ -2,7 +2,6 @@ from rock_paper_scissors.valid_choices import VALID_CHOICES
 
 
 class User(object):
-
     def __init__(self, name):
         self.score = 0
         self._choice = None
