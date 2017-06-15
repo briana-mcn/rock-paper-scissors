@@ -7,6 +7,9 @@ class User(object):
         self._choice = None
         self.name = name
 
+    def __repr__(self):
+        return self.name
+
     @property
     def choice(self):
         return self._choice
