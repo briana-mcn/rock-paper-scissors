@@ -2,7 +2,6 @@ from rock_paper_scissors.valid_choices import VALID_CHOICES
 
 
 class Game(object):
-
     def __init__(self, player1, player2):
         self._rounds = 0
         self.player1 = player1
@@ -14,7 +13,6 @@ class Game(object):
 
     @rounds.setter
     def rounds(self, value):
-
         try:
             value = int(value)
         except ValueError:
@@ -49,7 +47,6 @@ class Game(object):
                 return None
 
     def play(self):
-
         if self.player1.choice == self.player2.choice:
             print('Tie')
         elif self.player1.choice < self.player2.choice:
