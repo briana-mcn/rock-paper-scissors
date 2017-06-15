@@ -1,5 +1,4 @@
-""" Object-Oriented Rock Paper Scissors """
-
+"""Object-Oriented Rock Paper Scissors"""
 import random
 
 from rock_paper_scissors.user import User
@@ -8,10 +7,8 @@ from rock_paper_scissors.game import Game
 
 
 def main():
-
     human = User('Human')
     computer = User('Computer')
-
     game = Game(human, computer)
 
     while game.rounds == 0:
