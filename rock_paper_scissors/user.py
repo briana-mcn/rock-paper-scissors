@@ -1,4 +1,4 @@
-from rock_paper_scissors.valid_choices import VALID_CHOICES
+from rock_paper_scissors.moves import Move
 
 
 class User(object):
@@ -13,13 +13,9 @@ class User(object):
 
     @choice.setter
     def choice(self, value):
-        if value in VALID_CHOICES:
-            move = self.convert_input_to_move(value)
-            self._choice = move
-        else:
-            print('Invalid Input')
-            exit()
+        try:
+            assert isinstance(value, Move)
+        except AssertionError:
+            raise Exception('Invalid instance of Move')
 
-    @staticmethod
-    def convert_input_to_move(user_input):
-        return VALID_CHOICES.get(user_input)
+        self._choice = value
