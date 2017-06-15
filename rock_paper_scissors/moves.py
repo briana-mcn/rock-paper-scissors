@@ -1,5 +1,4 @@
 class Move(object):
-
     def __eq__(self, other):
         if type(self) is type(other):
             return True
@@ -10,7 +9,6 @@ class Move(object):
 
 
 class Rock(Move):
-
     def __gt__(self, other):
         if isinstance(other, Scissors):
             return True
@@ -23,7 +21,6 @@ class Rock(Move):
 
 
 class Scissors(Move):
-
     def __gt__(self, other):
         if isinstance(other, Paper):
             return True
@@ -36,7 +33,6 @@ class Scissors(Move):
 
 
 class Paper(Move):
-
     def __gt__(self, other):
         if isinstance(other, Rock):
             return True
