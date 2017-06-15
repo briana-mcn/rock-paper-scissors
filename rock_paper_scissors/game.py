@@ -37,6 +37,15 @@ class Game(object):
     def valid_choices(self):
         return tuple(VALID_CHOICES.keys())
 
+    @staticmethod
+    def convert_input_to_move(user_input):
+        try:
+            move = VALID_CHOICES[user_input]
+        except KeyError:
+            raise Exception('Invalid user input')
+
+        return move
+
     def print_players_menu(self, menu_word):
         for player in self.player1, self.player2:
             if menu_word == 'Input':
