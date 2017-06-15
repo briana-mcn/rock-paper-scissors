@@ -6,11 +6,12 @@ from rock_paper_scissors.user import User
 from rock_paper_scissors.game import Game
 
 
-def main():
-    human = User('Human')
-    computer = User('Computer')
-    game = Game(human, computer)
+human = User('Human')
+computer = User('Computer')
+game = Game(human, computer)
 
+
+def main():
     while game.rounds == 0:
         game.rounds = input('How many odd rounds would you like to play? ')
 
