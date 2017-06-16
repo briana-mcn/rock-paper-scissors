@@ -36,7 +36,8 @@ def main():
         game.rounds = input('How many odd rounds would you like to play? ')
 
     while not game.is_complete:
-        validate_users_choice(game)
+        human_input_to_move(game, human)
+        computer.choice = computer_input_to_move(game)
 
         game.print_players_menu('Input')
         game.play()
