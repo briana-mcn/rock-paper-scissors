@@ -15,12 +15,10 @@ def human_input_to_move(game, human):
     )
 
     try:
-        human.choice = game.convert_input_to_move(input('Choose {}: '.format(choices)))
+        return game.convert_input_to_move(input('Choose {}: '.format(choices)))
     except Exception:
-        print('Input is invalid')
+        print('Input from {} is invalid. Enter another choice'.format(human))
         return human_input_to_move(game, human)
-
-    return human.choice
 
 
 def computer_input_to_move(game):
