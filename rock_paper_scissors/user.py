@@ -8,7 +8,7 @@ class User(object):
         self.name = name
 
     def __repr__(self):
-        return self.name
+        return '<{}: {}>'.format(self.__class__.__name__, self.name)
 
     @property
     def choice(self):
