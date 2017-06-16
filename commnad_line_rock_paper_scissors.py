@@ -6,6 +6,27 @@ from rock_paper_scissors.user import User
 from rock_paper_scissors.game import Game
 
 
+def human_input_to_move(game, human):
+    choices = ', or '.join(
+        [
+            ', '.join(game.valid_choices[:-1]),
+            game.valid_choices[-1]
+        ]
+    )
+
+    try:
+        human.choice = game.convert_input_to_move(input('Choose {}: '.format(choices)))
+    except Exception:
+        print('Input is invalid')
+        return human_input_to_move(game, human)
+
+    return human.choice
+
+
+def computer_input_to_move(game):
+    return game.convert_input_to_move(random.choice(game.valid_choices))
+
+
 def main():
     human = User('Human')
     computer = User('Computer')
@@ -23,24 +44,6 @@ def main():
 
     game.determine_winner()
 
-
-def validate_users_choice(game):
-    choices = ', or '.join(
-        [
-            ', '.join(game.valid_choices[:-1]),
-            game.valid_choices[-1]
-        ]
-    )
-
-    p1 = input('Choose {}: '.format(choices))
-    p2 = random.choice(game.valid_choices)
-
-    for (player, choice) in ((game.player1, p1), (game.player2, p2)):
-        try:
-            player.choice = game.convert_input_to_move(choice)
-        except Exception:
-            print('Input from {} is invalid, enter another choice'.format(player))
-            return validate_users_choice()
 
 if __name__ == '__main__':
     main()
