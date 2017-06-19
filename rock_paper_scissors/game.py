@@ -16,20 +16,17 @@ class Game(object):
         try:
             value = int(value)
         except ValueError:
-            print('Input cannot be a string')
-            return
+            raise Exception('Please enter an integer')
 
         try:
             assert value % 2 != 0
         except AssertionError:
-            print('Please enter an odd number of rounds')
-            return
+            raise Exception('Please enter an odd number of rounds')
 
         try:
             assert value > 0
         except AssertionError:
-            print('Please enter a number greater than zero')
-            return
+            raise Exception('Please enter a number greater than zero')
 
         self._rounds = value
 
