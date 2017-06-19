@@ -31,7 +31,11 @@ def main():
     game = Game(human, computer)
 
     while game.rounds == 0:
-        game.rounds = input('How many odd rounds would you like to play? ')
+        try:
+            game.rounds = input('How many odd rounds would you like to play? ')
+        except Exception:
+            print('Invalid Input. Please enter an odd number of rounds.')
+            continue
 
     while not game.is_complete:
         human.choice = human_input_to_move(game, human)
