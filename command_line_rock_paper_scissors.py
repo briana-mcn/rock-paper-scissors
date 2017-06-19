@@ -33,8 +33,8 @@ def main():
     while game.rounds == 0:
         try:
             game.rounds = input('How many odd rounds would you like to play? ')
-        except Exception:
-            print('Invalid Input. Please enter an odd number of rounds.')
+        except Exception as e:
+            print(e)
             continue
 
     while not game.is_complete:
