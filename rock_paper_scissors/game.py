@@ -21,7 +21,7 @@ class Game(object):
         try:
             assert value % 2 != 0
         except AssertionError:
-            raise Exception('Please enter an odd number of rounds')
+            raise Exception('Choice must be an odd number')
 
         try:
             assert value > 0
