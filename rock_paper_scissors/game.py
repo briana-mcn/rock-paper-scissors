@@ -61,13 +61,13 @@ class Game(object):
 
     def play(self):
         if self.player1.choice == self.player2.choice:
-            print('Tie')
+            return 'Tie'
         elif self.player1.choice < self.player2.choice:
-            print('Computer wins')
             self.player2.score += 1
+            return 'Computer wins'
         else:
-            print('Human wins')
             self.player1.score += 1
+            return 'Human wins'
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
