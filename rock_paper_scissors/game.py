@@ -26,7 +26,7 @@ class Game(object):
         try:
             assert value > 0
         except AssertionError:
-            raise Exception('Please enter a number greater than zero')
+            raise Exception('Choice must be greater than zero')
 
         self._rounds = value
 
