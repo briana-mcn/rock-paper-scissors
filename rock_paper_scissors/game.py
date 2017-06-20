@@ -39,7 +39,7 @@ class Game(object):
         try:
             move = VALID_CHOICES[user_input]
         except KeyError:
-            raise Exception('Invalid user input')
+            raise Exception('Choice must be a valid key')
 
         return move
 
