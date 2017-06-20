@@ -16,7 +16,7 @@ class Game(object):
         try:
             value = int(value)
         except ValueError:
-            raise Exception('Please enter an integer')
+            raise Exception('Choice must be an integer')
 
         try:
             assert value % 2 != 0
