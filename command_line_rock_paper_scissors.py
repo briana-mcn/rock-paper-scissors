@@ -34,6 +34,7 @@ def main():
         try:
             game.rounds = input('How many odd rounds would you like to play? ')
         except Exception as e:
+            print('Rounds choice is invalid')
             print(e)
             continue
 
