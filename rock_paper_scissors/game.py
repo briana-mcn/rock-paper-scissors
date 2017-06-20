@@ -43,6 +43,7 @@ class Game(object):
 
         return move
 
+    @property
     def players_input(self):
         players_input_store = []
         for player in self.player1, self.player2:
@@ -50,6 +51,7 @@ class Game(object):
 
         return '\n'.join(players_input_store)
 
+    @property
     def players_score(self):
         players_score_store = []
         for player in self.player1, self.player2:
