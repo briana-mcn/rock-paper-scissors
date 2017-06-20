@@ -71,9 +71,9 @@ class Game(object):
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
-            print('Human wins game!')
+            return 'Human wins game!'
         elif self.player1.score < self.player2.score:
-            print('Computer wins game!')
+            return 'Computer wins game!'
         else:
             return None
 
