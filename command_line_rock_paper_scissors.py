@@ -42,11 +42,11 @@ def main():
         human.choice = human_input_to_move(game, human)
         computer.choice = computer_input_to_move(game)
 
-        print(game.players_input())
-        game.play()
-        print(game.players_score())
+        print(game.players_input)
+        print(game.play())
+        print(game.players_score)
 
-    game.determine_winner()
+    print(game.determine_winner())
 
 
 if __name__ == '__main__':
