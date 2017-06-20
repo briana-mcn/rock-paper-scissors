@@ -42,9 +42,9 @@ def main():
         human.choice = human_input_to_move(game, human)
         computer.choice = computer_input_to_move(game)
 
-        game.print_players_menu('Input')
+        print(game.players_input())
         game.play()
-        game.print_players_menu('Score')
+        print(game.players_score())
 
     game.determine_winner()
 
