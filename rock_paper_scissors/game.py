@@ -43,14 +43,19 @@ class Game(object):
 
         return move
 
-    def print_players_menu(self, menu_word):
+    def players_input(self):
+        players_input_store = []
         for player in self.player1, self.player2:
-            if menu_word == 'Input':
-                print('{} {}: {}'.format(player.name, menu_word, player.choice))
-            elif menu_word == 'Score':
-                print('{} {}: {}'.format(player.name, menu_word, player.score))
-            else:
-                return None
+            players_input_store.append('{} {}: {}'.format(player.name, 'Input', player.choice))
+
+        return '\n'.join(players_input_store)
+
+    def players_score(self):
+        players_score_store = []
+        for player in self.player1, self.player2:
+            players_score_store.append('{} {}: {}'.format(player.name, 'Score', player.score))
+
+        return '\n'.join(players_score_store)
 
     def play(self):
         if self.player1.choice == self.player2.choice:
