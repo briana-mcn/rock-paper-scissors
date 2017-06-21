@@ -48,16 +48,16 @@ class Game(object):
             return 'Tie'
         elif self.player1.choice < self.player2.choice:
             self.player2.score += 1
-            return 'Computer wins'
+            return '{} wins'.format(self.player2.name)
         else:
             self.player1.score += 1
-            return 'Human wins'
+            return '{} wins'.format(self.player1.name)
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
-            return 'Human wins game!'
+            return '{} wins game!'.format(self.player1.name)
         elif self.player1.score < self.player2.score:
-            return 'Computer wins game!'
+            return '{} wins game!'.format(self.player2.name)
         else:
             return None
 
