@@ -25,6 +25,22 @@ def computer_input_to_move(game):
     return game.convert_input_to_move(random.choice(game.valid_choices))
 
 
+def players_input(human, computer):
+    players_input_store = []
+    for player in human, computer:
+        players_input_store.append('{} {}: {}'.format(player.name, 'Input', player.choice))
+
+    return '\n'.join(players_input_store)
+
+
+def players_score(human, computer):
+    players_score_store = []
+    for player in human, computer:
+        players_score_store.append('{} {}: {}'.format(player.name, 'Score', player.score))
+
+    return '\n'.join(players_score_store)
+
+
 def main():
     human = User('Human')
     computer = User('Computer')
