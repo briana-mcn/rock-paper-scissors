@@ -58,9 +58,9 @@ def main():
         human.choice = human_input_to_move(game, human)
         computer.choice = computer_input_to_move(game)
 
-        print(game.players_input)
+        print(players_input(human, computer))
         print(game.play())
-        print(game.players_score)
+        print(players_score(human, computer))
 
     print(game.determine_winner())
 
