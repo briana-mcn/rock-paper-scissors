@@ -17,7 +17,7 @@ def human_input_to_move(game, human):
     try:
         return game.convert_input_to_move(input('Choose {}: '.format(choices)))
     except Exception:
-        print('Input from {} is invalid. Enter another choice'.format(human))
+        print('Input from {} is invalid. Please enter a valid choice'.format(human))
         return human_input_to_move(game, human)
 
 
@@ -31,7 +31,12 @@ def main():
     game = Game(human, computer)
 
     while game.rounds == 0:
-        game.rounds = input('How many odd rounds would you like to play? ')
+        try:
+            game.rounds = input('How many odd rounds would you like to play? ')
+        except Exception as e:
+            print('Rounds choice is invalid')
+            print(e)
+            continue
 
     while not game.is_complete:
         human.choice = human_input_to_move(game, human)

@@ -16,20 +16,17 @@ class Game(object):
         try:
             value = int(value)
         except ValueError:
-            print('Input cannot be a string')
-            return
+            raise Exception('Choice must be an integer')
 
         try:
             assert value % 2 != 0
         except AssertionError:
-            print('Please enter an odd number of rounds')
-            return
+            raise Exception('Choice must be an odd number')
 
         try:
             assert value > 0
         except AssertionError:
-            print('Please enter a number greater than zero')
-            return
+            raise Exception('Choice must be greater than zero')
 
         self._rounds = value
 
@@ -42,7 +39,7 @@ class Game(object):
         try:
             move = VALID_CHOICES[user_input]
         except KeyError:
-            raise Exception('Invalid user input')
+            raise Exception('Choice must be a valid key')
 
         return move
 
