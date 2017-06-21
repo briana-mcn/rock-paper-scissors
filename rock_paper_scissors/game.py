@@ -43,22 +43,6 @@ class Game(object):
 
         return move
 
-    @property
-    def players_input(self):
-        players_input_store = []
-        for player in self.player1, self.player2:
-            players_input_store.append('{} {}: {}'.format(player.name, 'Input', player.choice))
-
-        return '\n'.join(players_input_store)
-
-    @property
-    def players_score(self):
-        players_score_store = []
-        for player in self.player1, self.player2:
-            players_score_store.append('{} {}: {}'.format(player.name, 'Score', player.score))
-
-        return '\n'.join(players_score_store)
-
     def play(self):
         if self.player1.choice == self.player2.choice:
             return 'Tie'
