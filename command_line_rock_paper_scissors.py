@@ -36,7 +36,7 @@ def players_input(human, computer):
 def players_score(human, computer):
     players_score_store = []
     for player in human, computer:
-        players_score_store.append('{} {}: {}'.format(player.name, 'Score', player.score))
+        players_score_store.append('{} Score: {}'.format(player.name, player.score))
 
     return '\n'.join(players_score_store)
 
