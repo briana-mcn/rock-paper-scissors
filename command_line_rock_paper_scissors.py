@@ -25,6 +25,22 @@ def computer_input_to_move(game):
     return game.convert_input_to_move(random.choice(game.valid_choices))
 
 
+def players_input(human, computer):
+    players_input_store = []
+    for player in human, computer:
+        players_input_store.append('{} Input: {}'.format(player.name, player.choice))
+
+    return '\n'.join(players_input_store)
+
+
+def players_score(human, computer):
+    players_score_store = []
+    for player in human, computer:
+        players_score_store.append('{} Score: {}'.format(player.name, player.score))
+
+    return '\n'.join(players_score_store)
+
+
 def main():
     human = User('Human')
     computer = User('Computer')
@@ -42,11 +58,11 @@ def main():
         human.choice = human_input_to_move(game, human)
         computer.choice = computer_input_to_move(game)
 
-        game.print_players_menu('Input')
-        game.play()
-        game.print_players_menu('Score')
+        print(players_input(human, computer))
+        print(game.play())
+        print(players_score(human, computer))
 
-    game.determine_winner()
+    print(game.determine_winner())
 
 
 if __name__ == '__main__':

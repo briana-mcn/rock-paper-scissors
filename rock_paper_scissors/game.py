@@ -43,30 +43,21 @@ class Game(object):
 
         return move
 
-    def print_players_menu(self, menu_word):
-        for player in self.player1, self.player2:
-            if menu_word == 'Input':
-                print('{} {}: {}'.format(player.name, menu_word, player.choice))
-            elif menu_word == 'Score':
-                print('{} {}: {}'.format(player.name, menu_word, player.score))
-            else:
-                return None
-
     def play(self):
         if self.player1.choice == self.player2.choice:
-            print('Tie')
+            return 'Tie'
         elif self.player1.choice < self.player2.choice:
-            print('Computer wins')
             self.player2.score += 1
+            return '{} wins'.format(self.player2.name)
         else:
-            print('Human wins')
             self.player1.score += 1
+            return '{} wins'.format(self.player1.name)
 
     def determine_winner(self):
         if self.player1.score > self.player2.score:
-            print('Human wins game!')
+            return '{} wins game!'.format(self.player1.name)
         elif self.player1.score < self.player2.score:
-            print('Computer wins game!')
+            return '{} wins game!'.format(self.player2.name)
         else:
             return None
 
