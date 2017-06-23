@@ -28,7 +28,7 @@ def computer_input_to_move(game):
 def players_input(human, computer):
     players_input_store = []
     for player in human, computer:
-        players_input_store.append('{} {}: {}'.format(player.name, 'Input', player.choice))
+        players_input_store.append('{} Input: {}'.format(player.name, player.choice))
 
     return '\n'.join(players_input_store)
 
