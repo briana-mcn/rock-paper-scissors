@@ -13,7 +13,7 @@ class InvalidChoiceError(InputError):
     pass
 
 
-class UserRoundsInputError(UserDefinedError):
+class InvalidRoundsError(InputError):
     """Raised for invalid rounds input."""
     pass
 
