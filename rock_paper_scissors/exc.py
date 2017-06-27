@@ -20,5 +20,4 @@ class InvalidRoundsError(InputError):
 
 class InstanceNotMoveError(RockPaperScissorsError):
     """Raised if conversion from user input to Move instance failed."""
-    def __init__(self, message):
-        self.message = message
+    pass
