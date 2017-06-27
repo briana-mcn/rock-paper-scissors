@@ -8,10 +8,9 @@ class InputError(RockPaperScissorsError):
     pass
 
 
-class UserChoiceInputError(UserDefinedError):
-    """Raised for invalid User sting input."""
-    def __init__(self, message):
-        self.message = message
+class InvalidChoiceError(InputError):
+    """Raised for invalid User string input."""
+    pass
 
 
 class UserRoundsInputError(UserDefinedError):
