@@ -3,7 +3,7 @@ class RockPaperScissorsError(Exception):
     pass
 
 
-class UserDefinedError(ProgramError):
+class InputError(RockPaperScissorsError):
     """Raised for all user input errors."""
     pass
 
