@@ -1,4 +1,4 @@
-class ProgramError(Exception):
+class RockPaperScissorsError(Exception):
     """Base exception class for errors raised by rock paper scissors program."""
     pass
 
