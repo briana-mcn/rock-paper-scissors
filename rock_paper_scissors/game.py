@@ -18,17 +18,17 @@ class Game(object):
         try:
             value = int(value)
         except ValueError:
-            raise InvalidRoundsError('Choice must be an integer')
+            raise exc.InvalidRoundsError('Choice must be an integer')
 
         try:
             assert value % 2 != 0
         except AssertionError:
-            raise InvalidRoundsError('Choice must be an odd number')
+            raise exc.InvalidRoundsError('Choice must be an odd number')
 
         try:
             assert value > 0
         except AssertionError:
-            raise InvalidRoundsError('Choice must be greater than zero')
+            raise exc.InvalidRoundsError('Choice must be greater than zero')
 
         self._rounds = value
 
