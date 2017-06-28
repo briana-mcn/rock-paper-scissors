@@ -1,5 +1,6 @@
 from rock_paper_scissors.moves import Move
 
+from rock_paper_scissors.exc import InstanceNotMoveError
 
 class User(object):
     def __init__(self, name):
