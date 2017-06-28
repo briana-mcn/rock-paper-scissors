@@ -1,6 +1,7 @@
 from rock_paper_scissors.valid_choices import VALID_CHOICES
 
-from rock_paper_scissors.exc import InvalidRoundsError, InvalidChoiceError
+from rock_paper_scissors import exc
+
 
 class Game(object):
     def __init__(self, player1, player2):
