@@ -41,7 +41,7 @@ class Game(object):
         try:
             move = VALID_CHOICES[user_input]
         except KeyError:
-            raise InvalidChoiceError('Choice must be a valid key')
+            raise exc.InvalidChoiceError('Choice must be a valid key')
 
         return move
 
