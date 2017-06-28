@@ -21,6 +21,6 @@ class User(object):
         try:
             assert isinstance(value, Move)
         except AssertionError:
-            raise InstanceNotMoveError('Choice must be an instance of Move')
+            raise exc.InstanceNotMoveError('Choice must be an instance of Move')
 
         self._choice = value
