@@ -1,5 +1,4 @@
 from rock_paper_scissors.moves import Move
-
 from rock_paper_scissors import exc
 
 
