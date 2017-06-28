@@ -5,6 +5,8 @@ from rock_paper_scissors.user import User
 
 from rock_paper_scissors.game import Game
 
+from rock_paper_scissors import exc
+
 
 def human_input_to_move(game, human):
     choices = ', or '.join(
