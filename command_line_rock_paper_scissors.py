@@ -1,6 +1,8 @@
 """Object-Oriented Rock Paper Scissors"""
 import random
 
+import sys
+
 from rock_paper_scissors.user import User
 
 from rock_paper_scissors.game import Game
@@ -71,4 +73,7 @@ if __name__ == '__main__':
     try:
         main()
     except exc.RockPaperScissorsError as e:
-        print(e)
+        if '--debug' in sys.argv[1:]:
+            raise e
+        else:
+            print(e)
