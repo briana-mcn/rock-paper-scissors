@@ -51,7 +51,7 @@ def main():
     while game.rounds == 0:
         try:
             game.rounds = input('How many odd rounds would you like to play? ')
-        except Exception as e:
+        except exc.InputError as e:
             print('Rounds choice is invalid')
             print(e)
             continue
