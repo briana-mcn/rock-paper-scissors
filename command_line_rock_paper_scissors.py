@@ -1,12 +1,9 @@
 """Object-Oriented Rock Paper Scissors"""
 import random
-
 import sys
 
 from rock_paper_scissors.user import User
-
 from rock_paper_scissors.game import Game
-
 from rock_paper_scissors import exc
 
 
