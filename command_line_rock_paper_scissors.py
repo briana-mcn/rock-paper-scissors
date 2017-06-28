@@ -20,7 +20,7 @@ def human_input_to_move(game, human):
 
     try:
         return game.convert_input_to_move(input('Choose {}: '.format(choices)))
-    except exc.InputError:
+    except exc.InvalidChoiceError:
         print('Input from {} is invalid. Please enter a valid choice'.format(human))
         return human_input_to_move(game, human)
 
