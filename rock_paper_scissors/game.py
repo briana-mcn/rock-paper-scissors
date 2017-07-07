@@ -1,3 +1,4 @@
+from rock_paper_scissors import exc
 from rock_paper_scissors.valid_choices import VALID_CHOICES
 
 
@@ -16,17 +17,17 @@ class Game(object):
         try:
             value = int(value)
         except ValueError:
-            raise Exception('Choice must be an integer')
+            raise exc.InvalidRoundsError('Choice must be an integer')
 
         try:
             assert value % 2 != 0
         except AssertionError:
-            raise Exception('Choice must be an odd number')
+            raise exc.InvalidRoundsError('Choice must be an odd number')
 
         try:
             assert value > 0
         except AssertionError:
-            raise Exception('Choice must be greater than zero')
+            raise exc.InvalidRoundsError('Choice must be greater than zero')
 
         self._rounds = value
 
@@ -39,7 +40,7 @@ class Game(object):
         try:
             move = VALID_CHOICES[user_input]
         except KeyError:
-            raise Exception('Choice must be a valid key')
+            raise exc.InvalidChoiceError('Choice must be a valid key')
 
         return move
 

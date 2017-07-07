@@ -1,3 +1,4 @@
+from rock_paper_scissors import exc
 from rock_paper_scissors.moves import Move
 
 
@@ -19,6 +20,6 @@ class User(object):
         try:
             assert isinstance(value, Move)
         except AssertionError:
-            raise Exception('Choice must be an instance of Move')
+            raise exc.InstanceNotMoveError('Choice must be an instance of Move')
 
         self._choice = value

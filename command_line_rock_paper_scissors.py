@@ -1,9 +1,10 @@
 """Object-Oriented Rock Paper Scissors"""
 import random
+import sys
 
-from rock_paper_scissors.user import User
-
+from rock_paper_scissors import exc
 from rock_paper_scissors.game import Game
+from rock_paper_scissors.user import User
 
 
 def human_input_to_move(game, human):
@@ -16,7 +17,7 @@ def human_input_to_move(game, human):
 
     try:
         return game.convert_input_to_move(input('Choose {}: '.format(choices)))
-    except Exception:
+    except exc.InvalidChoiceError:
         print('Input from {} is invalid. Please enter a valid choice'.format(human))
         return human_input_to_move(game, human)
 
@@ -49,7 +50,7 @@ def main():
     while game.rounds == 0:
         try:
             game.rounds = input('How many odd rounds would you like to play? ')
-        except Exception as e:
+        except exc.InvalidRoundsError as e:
             print('Rounds choice is invalid')
             print(e)
             continue
@@ -66,4 +67,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except exc.RockPaperScissorsError as e:
+        if '--debug' in sys.argv[1:]:
+            raise e
+        else:
+            print(e)
