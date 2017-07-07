@@ -2,9 +2,9 @@
 import random
 import sys
 
-from rock_paper_scissors import exc
-from rock_paper_scissors.game import Game
-from rock_paper_scissors.user import User
+from rock_paper_scissors.core import exc
+from rock_paper_scissors.core.game import Game
+from rock_paper_scissors.core.user import User
 
 
 def human_input_to_move(game, human):
