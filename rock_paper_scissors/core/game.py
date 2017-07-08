@@ -1,6 +1,5 @@
-from rock_paper_scissors.valid_choices import VALID_CHOICES
-
 from rock_paper_scissors.core import exc
+from rock_paper_scissors.core.valid_choices import VALID_CHOICES
 
 
 class Game(object):
