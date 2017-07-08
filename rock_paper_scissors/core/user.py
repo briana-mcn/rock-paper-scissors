@@ -1,6 +1,5 @@
-from rock_paper_scissors.moves import Move
-
 from rock_paper_scissors.core import exc
+from rock_paper_scissors.core.moves import Move
 
 
 class User(object):
