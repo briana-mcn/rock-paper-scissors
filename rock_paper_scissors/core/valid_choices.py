@@ -1,4 +1,4 @@
-from rock_paper_scissors.moves import Scissors, Paper, Rock
+from rock_paper_scissors.core.moves import Scissors, Paper, Rock
 
 
 VALID_CHOICES = {
