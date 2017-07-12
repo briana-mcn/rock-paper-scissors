@@ -18,7 +18,7 @@ class Game(ModelBase):
     rounds_choice = Column(Integer)
     rounds_decrement = Column(Integer)
     current_round = Column(Integer)
-    winner = Column(String, ForeignKey('user.id'))
+    winner_id = Column(Integer, ForeignKey('user.id'))
 
     round = relationship('Round', back_populates='game')
     user = relationship('User', back_populates='game', uselist=False)
