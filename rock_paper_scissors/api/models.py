@@ -29,8 +29,8 @@ class Round(ModelBase):
     __tablename__ = 'round'
 
     id = Column(Integer, primary_key=True)
-    player_1_choice = Column(String, ForeignKey('choice.id'))
-    player_2_choice = Column(String, ForeignKey('choice.id'))
+    player_1_choice_id = Column(String, ForeignKey('choice.id'))
+    player_2_choice_id = Column(String, ForeignKey('choice.id'))
     winner = Column(String, ForeignKey('user.score'))
 
     game = relationship('Game', back_populates='round')
