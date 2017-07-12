@@ -23,6 +23,7 @@ class Game(ModelBase):
     player_1 = relationship('User', foreign_keys=[player_1_id])
     player_2 = relationship('User', foreign_keys=[player_2_id])
     winner = relationship('User', foreign_keys=[winner_id])
+    round = relationship('Round')
 
 
 class Round(ModelBase):
