@@ -9,6 +9,8 @@ ModelBase = declarative_base()
 
 
 class Game(ModelBase):
+    __tablename__ = 'game'
+
     id = Column(Integer, primary_key=True)
     player_1_id = Column(Integer, ForeignKey('user.id'))
     player_2_id = Column(Integer, ForeignKey('user.id'))
@@ -23,6 +25,8 @@ class Game(ModelBase):
 
 
 class Round(ModelBase):
+    __tablename__ = 'round'
+
     id = Column(Integer, primary_key=True)
     player_1_choice = Column(String, ForeignKey('choice.id'))
     player_2_choice = Column(String, ForeignKey('choice.id'))
@@ -34,6 +38,8 @@ class Round(ModelBase):
 
 
 class User(ModelBase):
+    __tablename__ = 'user'
+
     id = Column(Integer, primary_key=True)
     name = Column(String)
     score = Column(Integer)
@@ -45,6 +51,8 @@ class User(ModelBase):
 
 
 class Choice(ModelBase):
+    __tablename__ = 'choice'
+
     id = Column(Integer, primary_key=True)
     rounds_id = Column(Integer, ForeignKey('rounds.id'))
     player = Column(Integer, ForeignKey('user.id'))
