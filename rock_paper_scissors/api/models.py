@@ -20,9 +20,9 @@ class Game(ModelBase):
     current_round = Column(Integer)
     winner_id = Column(Integer, ForeignKey('user.id'))
 
-    player_1 = relationship('User', foreign_key=[player_1_id])
-    player_2 = relationship('User', foreign_key=[player_2_id])
-    winner = relationship('User', foreign_key=[winner_id])
+    player_1 = relationship('User', foreign_keys=[player_1_id])
+    player_2 = relationship('User', foreign_keys=[player_2_id])
+    winner = relationship('User', foreign_keys=[winner_id])
 
 
 class Round(ModelBase):
