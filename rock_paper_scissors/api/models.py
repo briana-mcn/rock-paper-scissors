@@ -34,9 +34,10 @@ class Round(ModelBase):
     winner_id = Column(Integer, ForeignKey('user.id'))
     game_id = Column(Integer, ForeignKey('game.id'))
 
-    game = relationship('Game', back_populates='round')
-    user = relationship('User', back_populate='user')
-    choice = relationship('Choice', back_populate='round')
+    game = relationship('Game')
+    user = relationship('User')
+    player_1_choice = relationship('Choice', foreign_keys=[player_1_choice_id])
+    player_2_choice = relationship('Choice', foreign_keys=[player_2_choice_id])
 
 
 class User(ModelBase):
