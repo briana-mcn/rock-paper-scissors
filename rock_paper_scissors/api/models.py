@@ -1,11 +1,3 @@
-"""
-Relationships with Foreign Keys, esp. relationship() and FK values
-Why do we need to establish columns for players in game?
-difference with many to one and one to many -- if you back_populate either relationship type,
-    does it matter which you use?
-
-"""
-
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import Enum
 from sqlalchemy import ForeignKey
