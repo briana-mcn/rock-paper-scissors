@@ -1,14 +1,11 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import Enum
 from sqlalchemy import ForeignKey
-from sqlalchemy.ext.declarative import as_declarative
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
 
-@as_declarative()
-class ModelBase(object):
-    def __tablename__(self):
-        return self.__class__.__name__.lower()
+ModelBase = declarative_base()
 
 
 class Game(ModelBase):
