@@ -59,7 +59,7 @@ class Choice(ModelBase):
 
     id = Column(Integer, primary_key=True)
     rounds_id = Column(Integer, ForeignKey('rounds.id'))
-    player = Column(Integer, ForeignKey('user.id'))
+    player_id = Column(Integer, ForeignKey('user.id'))
     move = Column('moves', Enum('Paper', 'Rock', 'Scissors'))
 
     user = relationship('User', back_populates='choice')
