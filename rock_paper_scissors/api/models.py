@@ -47,7 +47,7 @@ class User(ModelBase):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     score = Column(Integer)
-    choices = Column(String, ForeignKey('choice.move'))
+    choices = Column(Integer, ForeignKey('choice.player_id'))
 
     game = relationship('Game', back_populates='user')
     choice = relationship('Choice', back_populates='user')
