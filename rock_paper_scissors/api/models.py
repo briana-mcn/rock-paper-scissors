@@ -49,7 +49,7 @@ class User(ModelBase):
     score = Column(Integer)
     choices = Column(Integer, ForeignKey('choice.player_id'))
 
-    game = relationship('Game', back_populates='user')
+    games = relationship('Game', foriegn_keys=['Game.player_1_id', 'Game.player_2_id'])
     choice = relationship('Choice', back_populates='user')
     round = relationship('Round', back_populate='user')
 
