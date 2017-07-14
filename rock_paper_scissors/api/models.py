@@ -61,5 +61,5 @@ class Choice(ModelBase):
     player_id = Column(Integer, ForeignKey('user.id'))
     move = Column('moves', Enum('Paper', 'Rock', 'Scissors'))
 
-    user = relationship('User', back_populates='choice')
-    round = relationship('Round', back_populate='choice')
+    user = relationship('User')
+    round = relationship('Round')
