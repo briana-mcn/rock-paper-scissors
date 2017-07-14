@@ -16,7 +16,6 @@ class Game(ModelBase):
     player_2_id = Column(Integer, ForeignKey('user.id'))
     round_id = Column(Integer, ForeignKey('round.id'))
     rounds_choice = Column(Integer)
-    rounds_decrement = Column(Integer)
     current_round = Column(Integer)
     winner_id = Column(Integer, ForeignKey('user.id'))
 
