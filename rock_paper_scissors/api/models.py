@@ -51,7 +51,6 @@ class User(ModelBase):
 
     games = relationship('Game', foriegn_keys=['Game.player_1_id', 'Game.player_2_id'])
     choices = relationship('Choice')
-    round = relationship('Round', back_populate='user')
 
 
 class Choice(ModelBase):
