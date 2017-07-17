@@ -14,10 +14,9 @@ class Game(ModelBase):
     id = Column(Integer, primary_key=True)
     player_1_id = Column(Integer, ForeignKey('user.id'))
     player_2_id = Column(Integer, ForeignKey('user.id'))
-    round_id = Column(Integer, ForeignKey('round.id'))
-    rounds_choice = Column(Integer)
-    current_round = Column(Integer)
-    winner_id = Column(Integer, ForeignKey('user.id'))
+    round_id = Column(Integer, ForeignKey('round.id'), nullable=False)
+    rounds_limit = Column(Integer)
+    winner_id = Column(Integer, ForeignKey('user.id'), nullable=False)
 
     player_1 = relationship('User', foreign_keys=[player_1_id])
     player_2 = relationship('User', foreign_keys=[player_2_id])
