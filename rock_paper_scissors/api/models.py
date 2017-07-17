@@ -41,11 +41,10 @@ class User(ModelBase):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    score = Column(Integer)
-    choices_id = Column(Integer, ForeignKey('choice.player_id'))
 
-    games = relationship('Game', foriegn_keys=['Game.player_1_id', 'Game.player_2_id'])
-    choices = relationship('Choice')
+    games_won = relationship('Game', foreign_keys=['Game.player_1_id', 'Game.player_2_id'])
+    rounds_won = relationship('Game', foreign_keys=['Round.winner_id'])
+    choices = relationship('Choice', foreign_keys=['Choice.player_id'])
 
 
 class Choice(ModelBase):
