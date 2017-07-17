@@ -51,9 +51,6 @@ class Choice(ModelBase):
     __tablename__ = 'choice'
 
     id = Column(Integer, primary_key=True)
-    rounds_id = Column(Integer, ForeignKey('rounds.id'))
+    round_id = Column(Integer, ForeignKey('round.id'))
     player_id = Column(Integer, ForeignKey('user.id'))
     move = Column('moves', Enum('Paper', 'Rock', 'Scissors'))
-
-    user = relationship('User')
-    round = relationship('Round')
