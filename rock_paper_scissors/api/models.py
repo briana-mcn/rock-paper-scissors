@@ -21,7 +21,9 @@ class Game(ModelBase):
     player_1 = relationship('User', foreign_keys=[player_1_id])
     player_2 = relationship('User', foreign_keys=[player_2_id])
     winner = relationship('User', foreign_keys=[winner_id])
-    round = relationship('Round')
+
+    rounds_remaining = relationship('Round', foreign_keys='Round.id')
+    current_round = relationship('Round', foreign_keys='Round.id')
 
 
 class Round(ModelBase):
