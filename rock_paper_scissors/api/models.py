@@ -30,9 +30,6 @@ class Round(ModelBase):
     __tablename__ = 'round'
 
     id = Column(Integer, primary_key=True)
-    player_1_choice_id = Column(Integer, ForeignKey('choice.id'))
-    player_2_choice_id = Column(Integer, ForeignKey('choice.id'))
-    winner_id = Column(Integer, ForeignKey('user.id'))
     game_id = Column(Integer, ForeignKey('game.id'))
 
     game = relationship('Game')
