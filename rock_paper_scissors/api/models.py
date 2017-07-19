@@ -1,6 +1,10 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy import Enum
-from sqlalchemy import ForeignKey
+from sqlalchemy import (
+    Column,
+    Enum,
+    ForeignKey,
+    Integer,
+    String
+)
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
