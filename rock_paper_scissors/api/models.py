@@ -28,6 +28,16 @@ class Game(ModelBase):
     rounds = relationship('Round', foreign_keys='[Round.game_id]')
     current_round = relationship('Round', foreign_keys='Round.id')
 
+    @property
+    def rounds_remaining(self):
+        rounds_complete = 0
+
+        for round in self.rounds:
+            if round.winning_choice is not None:
+                rounds_complete += 1
+
+        return self.rounds_limit - rounds_complete
+
 
 class Round(ModelBase):
     __tablename__ = 'round'
