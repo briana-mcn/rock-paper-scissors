@@ -26,7 +26,13 @@ class Game(ModelBase):
     winner = relationship('User', foreign_keys=[winner_id])
 
     rounds = relationship('Round', foreign_keys='[Round.game_id]')
-    current_round = relationship('Round', foreign_keys='Round.id')
+
+    @property
+    def current_round(self):
+        for round in self.rounds:
+            if round.winning_choice is None:
+                return round.id
+        return
 
     @property
     def rounds_remaining(self):
