@@ -55,7 +55,7 @@ class Round(ModelBase):
     game_id = Column(Integer, ForeignKey('game.id'))
     winning_choice_id = Column(Integer, ForeignKey('choice.id'), nullable=True)
 
-    winning_choice = relationship('Choice', foreign_keys='Round.winning_choice_id')
+    winning_choice = relationship('Choice', foreign_keys=[winning_choice_id])
     choices = relationship('Choice', foreign_keys='[Choice.round_id]')
 
 
