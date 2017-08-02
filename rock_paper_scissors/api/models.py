@@ -1,15 +1,18 @@
 from sqlalchemy import (
     Column,
+    create_engine,
     Enum,
     ForeignKey,
     Integer,
     String
 )
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
-
+from sqlalchemy.orm import relationship, scoped_session, sessionmaker
 
 ModelBase = declarative_base()
+engine = create_engine('sqlite://', convert_unicode=True)
+db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
+ModelBase.query = db_session.query_property()
 
 
 class Game(ModelBase):
