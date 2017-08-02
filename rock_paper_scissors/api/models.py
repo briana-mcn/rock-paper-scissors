@@ -65,9 +65,21 @@ class User(ModelBase):
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
-    games_won = relationship('Game', foreign_keys=['Game.winner_id'])
-    rounds_won = relationship('Game', foreign_keys=['Round.winner_id'])
-    choices = relationship('Choice', foreign_keys=['Choice.player_id'])
+    games_won = relationship('Game', foreign_keys='[Game.winner_id]')
+    choices = relationship('Choice', foreign_keys='[Choice.player_id]')
+
+    @property
+    def rounds_won(self):
+        query = Round.query.join(
+            Choice,
+            Round.winning_choice_id == Choice.id
+        ).filter(
+            Choice.player_id == self.id
+        )
+
+        rounds = query.all()
+
+        return rounds
 
 
 class Choice(ModelBase):
