@@ -88,4 +88,4 @@ class Choice(ModelBase):
     id = Column(Integer, primary_key=True)
     round_id = Column(Integer, ForeignKey('round.id'))
     player_id = Column(Integer, ForeignKey('user.id'))
-    move = Column('moves', Enum('Paper', 'Rock', 'Scissors'))
+    move = Column('move', Enum('Paper', 'Rock', 'Scissors'))
