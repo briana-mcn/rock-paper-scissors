@@ -19,8 +19,8 @@ class Game(ModelBase):
     __tablename__ = 'game'
 
     id = Column(Integer, primary_key=True)
-    player_1_id = Column(Integer, ForeignKey('user.id'))
-    player_2_id = Column(Integer, ForeignKey('user.id'))
+    player_1_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    player_2_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     rounds_limit = Column(Integer)
     winner_id = Column(Integer, ForeignKey('user.id'), nullable=True)
 
@@ -52,7 +52,7 @@ class Round(ModelBase):
     __tablename__ = 'round'
 
     id = Column(Integer, primary_key=True)
-    game_id = Column(Integer, ForeignKey('game.id'))
+    game_id = Column(Integer, ForeignKey('game.id'), nullable=False)
     winning_choice_id = Column(Integer, ForeignKey('choice.id'), nullable=True)
 
     winning_choice = relationship('Choice', foreign_keys=[winning_choice_id])
@@ -86,6 +86,6 @@ class Choice(ModelBase):
     __tablename__ = 'choice'
 
     id = Column(Integer, primary_key=True)
-    round_id = Column(Integer, ForeignKey('round.id'))
-    player_id = Column(Integer, ForeignKey('user.id'))
+    round_id = Column(Integer, ForeignKey('round.id'), nullable=False)
+    player_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     move = Column('move', Enum('Paper', 'Rock', 'Scissors'))
