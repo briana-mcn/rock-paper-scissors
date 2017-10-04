@@ -15,7 +15,6 @@ class GameInitTestCase(unittest.TestCase):
 
         self.assertIsInstance(game.player1, str)
         self.assertIsInstance(game.player2, str)
-        self.assertIsInstance(game._rounds, int)
         self.assertEqual(game._rounds, 0)
 
 
@@ -26,20 +25,34 @@ class GameSetRoundsTestCase(unittest.TestCase):
     def test_valid_rounds_input(self):
         value = self.game.rounds = 11
 
-        self.assertIsInstance(value, int)
-        self.assertGreater(value, 0)
+        self.assertEqual(value, 11)
 
     def test_raises_error_if_round_not_an_int(self):
-        with self.assertRaises(InvalidRoundsError):
+        with self.assertRaises(InvalidRoundsError) as ctx:
             self.game.rounds = 'a'
 
+        self.assertEqual(
+            str(ctx.exception),
+            'Choice must be an integer'
+        )
+
     def test_raises_error_if_value_is_not_odd(self):
-        with self.assertRaises(InvalidRoundsError):
+        with self.assertRaises(InvalidRoundsError) as ctx:
             self.game.rounds = 2
 
+        self.assertEqual(
+            str(ctx.exception),
+            'Choice must be an odd number'
+        )
+
     def test_raises_error_if_value_is_not_positive(self):
-        with self.assertRaises(InvalidRoundsError):
+        with self.assertRaises(InvalidRoundsError) as ctx:
             self.game.rounds = -1
+
+        self.assertEqual(
+            str(ctx.exception),
+            'Choice must be greater than zero'
+        )
 
 
 class GameGetRoundsTestCase(unittest.TestCase):
@@ -84,7 +97,6 @@ class GamePlayLogicTestCase(unittest.TestCase):
         actual_tie = self.game.play()
         expected_tie = 'Tie'
 
-        self.assertIsInstance(actual_tie, str)
         self.assertEqual(actual_tie, expected_tie)
 
     def test_player1_does_not_get_point_if_player1_move_equals_player2_move(self):
@@ -150,7 +162,6 @@ class GamePlayLogicTestCase(unittest.TestCase):
         expected = '{} wins'.format(self.game.player1.name)
         actual = self.game.play()
 
-        self.assertIsInstance(actual, str)
         self.assertEqual(actual, expected)
 
     def test_player2_move_greater_than_player1_move_returns_winner_string(self):
@@ -160,7 +171,6 @@ class GamePlayLogicTestCase(unittest.TestCase):
         expected = '{} wins'.format(self.game.player2.name)
         actual = self.game.play()
 
-        self.assertIsInstance(actual, str)
         self.assertEqual(actual, expected)
 
 
@@ -177,7 +187,6 @@ class GameDetermineWinnerTestCase(unittest.TestCase):
         expected = '{} wins game!'.format(self.game.player1.name)
         actual = self.game.determine_winner()
 
-        self.assertIsInstance(actual, str)
         self.assertEqual(expected, actual)
 
     def test_player2_end_score_greater_than_player_1_end_score_returns_winner_string(self):
@@ -187,7 +196,6 @@ class GameDetermineWinnerTestCase(unittest.TestCase):
         expected = '{} wins game!'.format(self.game.player2.name)
         actual = self.game.determine_winner()
 
-        self.assertIsInstance(actual, str)
         self.assertEqual(expected, actual)
 
     def test_player1_score_equals_player2_score_returns_none(self):
