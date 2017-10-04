@@ -84,94 +84,50 @@ class GameConvertPlayerInputToMove(unittest.TestCase):
         self.assertRaises(InvalidChoiceError, Game.convert_input_to_move, 'fish')
 
 
-class GamePlayLogicTestCase(unittest.TestCase):
+class GamePlayTestCase(unittest.TestCase):
     def setUp(self):
         player1 = User('Joe')
         player2 = User('Jane')
         self.game = Game(player1, player2)
 
     def test_player1_move_equals_player2_move_returns_tie(self):
+        player1_starting_score = self.game.player1.score
+        player2_starting_score = self.game.player2.score
+
         self.game.player1.choice = Rock()
         self.game.player2.choice = Rock()
 
-        actual_tie = self.game.play()
-        expected_tie = 'Tie'
+        result = self.game.play()
 
-        self.assertEqual(actual_tie, expected_tie)
+        self.assertEqual(result, '{}'.format('Tie'))
+        self.assertEqual(player1_starting_score, self.game.player1.score)
+        self.assertEqual(player2_starting_score, self.game.player2.score)
 
-    def test_player1_does_not_get_point_if_player1_move_equals_player2_move(self):
-        self.game.player1.choice = Rock()
-        self.game.player2.choice = Rock()
-        self.game.play()
+    def test_round_results_when_player2_move_beats_player1_move(self):
+        player1_starting_score = self.game.player1.score
+        player2_starting_score = self.game.player2.score
 
-        actual_score = self.game.player1.score
-        expected_score = 0
-
-        self.assertEqual(actual_score, expected_score)
-
-    def test_player2_does_not_get_point_if_player1_move_equals_player2_move(self):
-        self.game.player1.choice = Rock()
-        self.game.player2.choice = Rock()
-        self.game.play()
-
-        actual_score = self.game.player2.score
-        expected_score = 0
-
-        self.assertEqual(actual_score, expected_score)
-
-    def test_player2_gets_point_if_player2_move_is_greater_than_player1_move(self):
-        self.game.player1.choice = Rock()
-        self.game.player2.choice = Paper()
-        self.game.play()
-        actual_score = self.game.player2.score
-        expected_score = 1
-
-        self.assertEqual(actual_score, expected_score)
-
-    def test_player1_gets_no_point_if_player2_move_greater_than_player1_move(self):
-        self.game.player1.choice = Rock()
-        self.game.player2.choice = Paper()
-        self.game.play()
-        actual_score = self.game.player1.score
-        expected_score = 0
-
-        self.assertEqual(actual_score, expected_score)
-
-    def test_player1_gets_point_if_player1_move_greater_than_player2_move(self):
-        self.game.player1.choice = Paper()
-        self.game.player2.choice = Rock()
-        self.game.play()
-        actual_score = self.game.player1.score
-        expected_score = 1
-
-        self.assertEqual(actual_score, expected_score)
-
-    def test_player2_gets_no_point_if_player1_move_greater_than_player2_move(self):
-        self.game.player1.choice = Paper()
-        self.game.player2.choice = Rock()
-        self.game.play()
-        actual_score = self.game.player2.score
-        expected_score = 0
-
-        self.assertEqual(actual_score, expected_score)
-
-    def test_player1_move_greater_than_player2_move_returns_winner_string(self):
-        self.game.player1.choice = Paper()
-        self.game.player2.choice = Rock()
-
-        expected = '{} wins'.format(self.game.player1.name)
-        actual = self.game.play()
-
-        self.assertEqual(actual, expected)
-
-    def test_player2_move_greater_than_player1_move_returns_winner_string(self):
         self.game.player1.choice = Rock()
         self.game.player2.choice = Paper()
 
-        expected = '{} wins'.format(self.game.player2.name)
-        actual = self.game.play()
+        result = self.game.play()
 
-        self.assertEqual(actual, expected)
+        self.assertEqual(result, '{} wins'.format(self.game.player2.name))
+        self.assertEqual(player1_starting_score, self.game.player1.score)
+        self.assertEqual(player2_starting_score + 1, self.game.player2.score)
+
+    def test_round_result_when_player1_move_beats_player2_move(self):
+        player1_starting_score = self.game.player1.score
+        player2_starting_score = self.game.player2.score
+
+        self.game.player1.choice = Paper()
+        self.game.player2.choice = Rock()
+
+        result = self.game.play()
+
+        self.assertEqual(result, '{} wins'.format(self.game.player1.name))
+        self.assertEqual(player1_starting_score + 1, self.game.player1.score)
+        self.assertEqual(player2_starting_score, self.game.player2.score)
 
 
 class GameDetermineWinnerTestCase(unittest.TestCase):
